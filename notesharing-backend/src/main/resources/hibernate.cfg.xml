@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC set up -->
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@rev2001.cpqplqtczbwy.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.username">notesharing</property>
+		<property name="hibernate.connection.password">jaggedMountain43</property>
+		
+		<!-- Hibernate set up -->
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		
+		<property name="show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<property name= "hibernate.id.new_generator_mappings">false</property>
+		<property name="use_sql_comments">true</property>
+		
+		<!-- Tell Hibernate where our mappings are -->
+		
+		<!-- Annotation Mappings -->
+		<mapping class="com.bandgeeks.beans.User"/>
+		<mapping class="com.bandgeeks.beans.Instructor"/>
+		<mapping class="com.bandgeeks.beans.Student"/>
+		<mapping class="com.bandgeeks.beans.Course"/>
+		<mapping class="com.bandgeeks.beans.GradeLevel"/>
+		<mapping class="com.bandgeeks.beans.Instrument"/>
+		<mapping class="com.bandgeeks.beans.InstrumentType"/>
+		<mapping class="com.bandgeeks.beans.Inventory"/>
+		<mapping class="com.bandgeeks.beans.Request"/>
+		<mapping class="com.bandgeeks.beans.Status"/>
+		<mapping class="com.bandgeeks.beans.Uniform"/>
+		<mapping class="com.bandgeeks.beans.UniformType"/>
+		<mapping class="com.bandgeeks.beans.Assignment"/>
+		<mapping class="com.bandgeeks.beans.Comment"/>
+		<mapping class="com.bandgeeks.beans.Login"/>		
+		<mapping class="com.bandgeeks.beans.Chatter"/>
+		
+		
+
+
+
+
+	</session-factory>
+</hibernate-configuration>
