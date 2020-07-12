@@ -1,4 +1,4 @@
-drop table uzer cascade constraints;
+drop table login cascade constraints;
 
 
 -------Sequences-----
@@ -12,17 +12,9 @@ create sequence login_seq nocache;
 
 
 
-create table employee(
-    employee_id number(3) PRIMARY KEY,
-    employee_name varchar2(20)
-);
-
-create table sales(
-    sales_id number(3) PRIMARY KEY,
-    emp_id number(3),
-    sales_amt number(5),
-    sales_date varchar(50),
-    foreign key (emp_id) references employee(employee_id)
+create table login(
+    user_id varchar2(50) PRIMARY KEY,
+    user_password varchar2(50)
 
 
 );
@@ -30,8 +22,8 @@ create table sales(
 
 
 -------USERS-------------
-insert into login (user_id, firstname, lastname, username, user_password)
-        values(1,'Ibrahim', 'Hamadi', 'IHamadi', 'password');
+insert into login (user_id, user_password)
+        values('user','password');
         
     
     
