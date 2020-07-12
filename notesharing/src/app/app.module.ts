@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { UrlService } from './services/url.service';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   imports: [
     BrowserModule,
     FormsModule,
-
-
+    HttpClientModule,
+    AppRoutingModule,
+    // MDBBootstrapModule.forRoot()
 
 
   ],
-  providers: [],
+  providers: [
+    UrlService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
