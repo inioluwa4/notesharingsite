@@ -4,7 +4,7 @@
 	<session-factory>
 		<!-- JDBC set up -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@rev2001.cpqplqtczbwy.us-east-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@armoire.cpqplqtczbwy.us-east-2.rds.amazonaws.com:1521:ORCL</property>
 		<property name="hibernate.connection.username">notesharing</property>
 		<property name="hibernate.connection.password">jaggedMountain43</property>
 		

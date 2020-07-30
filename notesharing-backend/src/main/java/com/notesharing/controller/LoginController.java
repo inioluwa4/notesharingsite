@@ -38,32 +38,32 @@ public class LoginController {
 		return ResponseEntity.ok(loggedUser);
 	}
 //
-//	@PostMapping(value = "/login")
-//	public ResponseEntity<Login> postLogin(String user, String pass, HttpSession session) {
-//		Instructor instr = logServ.loginAsInstructor(user, pass);
-//		Student stu = logServ.loginAsStudent(user, pass);
-//
-//		log.trace("Attempting to log in as User " + user + ", " + pass);
-//
-//		if (instr == null && stu == null) {
-//			log.trace("Cannot login null user");
-//			return ResponseEntity.notFound().build();
-//		} else {
-//			// Check if Person is a user
-//			log.trace("Logging in");
-//			Login loggedUser = new Login(stu, instr);
-//
-//			session.setAttribute("loggedUser", loggedUser);
-//			return ResponseEntity.ok(loggedUser);
-//
-//		}
+	@PostMapping(value = "/login")
+	public ResponseEntity<Login> postLogin(String user, String pass, HttpSession session) {
+		Login loggedIn = logServ.getUser(user, pass);
 
-//	}
-//
-//	@DeleteMapping(value = "/login")
-//	public ResponseEntity<Void> logout(HttpSession session) {
-//		session.invalidate();
-//		return ResponseEntity.noContent().build();
-//	}
+
+		log.trace("Attempting to log in as User " + user + ", " + pass);
+
+		if (loggedIn == null) {
+			log.trace("Cannot login null user");
+			return ResponseEntity.notFound().build();
+		} else {
+			// Check if Person is a user
+			log.trace("Logging in");
+			Login loggedUser = new Login(loggedIn.getUsername(), loggedIn.getPassword());
+
+			session.setAttribute("loggedUser", loggedUser);
+			return ResponseEntity.ok(loggedUser);
+
+		}
+
+	}
+
+	@DeleteMapping(value = "/login")
+	public ResponseEntity<Void> logout(HttpSession session) {
+		session.invalidate();
+		return ResponseEntity.noContent().build();
+	}
 
 }

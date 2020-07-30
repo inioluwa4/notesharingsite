@@ -28,7 +28,7 @@ public class UserHibernate implements UserDAO {
 		log.trace("");
 
 		Session s = hu.getSession();
-		String query = "from User u where u.username=:username and u.password=:password";
+		String query = "from Login u where u.username=:username and u.password=:password";
 		Query<Login> q = s.createQuery(query, Login.class);
 		q.setParameter("username", username);
 		q.setParameter("password", password);
