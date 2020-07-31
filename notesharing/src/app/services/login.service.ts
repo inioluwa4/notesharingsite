@@ -53,6 +53,26 @@ export class LoginService {
       );
     }
   }
+
+  
+  register(user:Login): Observable<Login> {
+    if (user) {
+      // we are attempting to log in
+      const body = user;
+      return this.http.post(this.appUrl, body, {
+        headers: this.headers,
+        withCredentials: true
+      }).pipe(
+        map(resp => {
+          const user: Login = resp as Login;
+          if (user) {
+            console.log(user);
+          }
+          return user;
+        })
+      );
+    } 
+  }
   logout(): Observable<object> {
     return this.http.delete(this.appUrl, {withCredentials: true}).pipe(
       map(success => {

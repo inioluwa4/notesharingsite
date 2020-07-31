@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public loggedUser: Login;
   public username: string;
   public password: string;
+  public User: Login;
 
   constructor(
     public route: Router,
@@ -32,6 +33,18 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login(this.username, this.password).subscribe(
+      resp => {
+        this.loggedUser = resp;
+        console.log('logged user ' + this.loggedUser);
+        this.route.navigate(['/home']);
+
+      }
+    );
+
+  }
+
+  register() {
+    this.loginService.register(this.User).subscribe(
       resp => {
         this.loggedUser = resp;
         console.log('logged user ' + this.loggedUser);
