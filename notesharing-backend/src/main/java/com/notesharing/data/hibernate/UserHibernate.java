@@ -36,6 +36,28 @@ public class UserHibernate implements UserDAO {
 		s.close();
 		return u;
 	}
+	
+
+	
+	
+	@Override
+	public int addUser(Login user) {
+		Session s = hu.getSession();
+		Transaction t = null;
+		Integer i = 0;
+		try {
+			t = s.beginTransaction();
+			i = (Integer) s.save(user);
+			t.commit();
+		} catch(HibernateException e) {
+			t.rollback();
+			LogUtil.logException(e, UserHibernate.class);
+		} finally {
+			s.close();
+		}
+		return i;
+	}
+
 
 
 

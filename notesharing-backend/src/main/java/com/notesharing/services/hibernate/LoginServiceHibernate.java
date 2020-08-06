@@ -24,5 +24,12 @@ public class LoginServiceHibernate implements LoginService {
 	}
 
 
+	@Override
+	public int addUser(Login user) {
+		// TODO Auto-generated method stub
+		return uDAO.addUser(user);
+	}
+
+
 
 }

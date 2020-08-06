@@ -7,6 +7,7 @@ import com.notesharing.models.Login;
 public interface UserDAO {
 	
 	public Login getUser(String username, String password);
+	public int addUser(Login user);
 
 	
 	

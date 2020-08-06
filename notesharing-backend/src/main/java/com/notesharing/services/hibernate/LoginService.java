@@ -4,6 +4,7 @@ import com.notesharing.models.Login;
 
 public interface LoginService {
 	public Login getUser (String username, String password);
+	public int addUser (Login user);
 	
 	
 
