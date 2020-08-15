@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   public loggedUser: Login;
   public username: string;
   public password: string;
-  public User: Login;
+  public user: Login;
 
   constructor(
     public route: Router,
@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.user = new Login();
     this.loginService.login(null, null).subscribe(
       resp => {
         this.loggedUser = resp;
@@ -44,7 +45,10 @@ export class LoginComponent implements OnInit {
   }
 
   register() {
-    this.loginService.register(this.User).subscribe(
+  
+    console.log(this.user)
+
+    this.loginService.register(this.user).subscribe(
       resp => {
         this.loggedUser = resp;
         console.log('logged user ' + this.loggedUser);
