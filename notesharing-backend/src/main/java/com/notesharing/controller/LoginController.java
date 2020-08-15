@@ -20,7 +20,7 @@ import com.notesharing.models.Login;
 import com.notesharing.services.hibernate.LoginService;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class LoginController {
 
