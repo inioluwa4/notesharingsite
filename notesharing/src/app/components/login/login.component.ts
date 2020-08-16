@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
   public username: string;
   public password: string;
   public user: Login;
+  public formview0 : Boolean
+  public formview1 : Boolean 
+ 
 
   constructor(
     public route: Router,
@@ -21,6 +24,9 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.formview0 = false;
+    this.formview1 = false;
+
     this.user = new Login();
     this.loginService.login(null, null).subscribe(
       resp => {
@@ -42,6 +48,21 @@ export class LoginComponent implements OnInit {
       }
     );
 
+  }
+
+  
+  form0() {
+    this.formview0 = true
+    this.formview1 = false
+
+  }
+  form1(){
+    this.formview0 = false
+    this.formview1 = true
+  }
+  form2(){
+    this.formview0 = false
+    this.formview1 = true
   }
 
   register() {

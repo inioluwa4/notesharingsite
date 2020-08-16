@@ -6,8 +6,8 @@ export class Login {
     lastname: string;
     email: string;
     school: string;
-    education_level: string;
-    classes: Array<Object>;
+    level: string;
+    course: Array<Object>;
 
 
 }
