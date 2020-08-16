@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/classes/login';
+import { Course } from 'src/app/classes/course';
 
 @Component({
   selector: 'app-login',
@@ -11,11 +12,15 @@ import { Login } from 'src/app/classes/login';
 export class LoginComponent implements OnInit {
 
   public loggedUser: Login;
+  public class: Course;
+
   public username: string;
   public password: string;
   public user: Login;
   public formview0 : Boolean
   public formview1 : Boolean 
+  public formview2 : Boolean 
+
  
 
   constructor(
@@ -28,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.formview1 = false;
 
     this.user = new Login();
+    this.class = new Course();
     this.loginService.login(null, null).subscribe(
       resp => {
         this.loggedUser = resp;
@@ -54,15 +60,21 @@ export class LoginComponent implements OnInit {
   form0() {
     this.formview0 = true
     this.formview1 = false
+    this.formview2 = false
+
 
   }
   form1(){
     this.formview0 = false
     this.formview1 = true
+    this.formview2 = false
+
   }
   form2(){
     this.formview0 = false
-    this.formview1 = true
+    this.formview1 = false
+    this.formview2 = true
+
   }
 
   register() {
@@ -77,6 +89,9 @@ export class LoginComponent implements OnInit {
 
       }
     );
+
+  }
+  addCourse() {
 
   }
 
