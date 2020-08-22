@@ -29,11 +29,13 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    
     this.formview0 = false;
     this.formview1 = false;
 
     this.user = new Login();
     this.class = new Course();
+
     this.loginService.login(null, null).subscribe(
       resp => {
         this.loggedUser = resp;
@@ -53,6 +55,8 @@ export class LoginComponent implements OnInit {
 
       }
     );
+    console.log(this.username, this.password)
+
 
   }
 
