@@ -1,5 +1,6 @@
 <ng-container *ngIf="!loggedUser; else logged">
-    <ul class="navbar-nav mr-auto">
+  <!-- Old -->
+    <!-- <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         Username:
         <input id="username" type="text" [(ngModel)]="username" />
@@ -22,8 +23,45 @@
         </button>
 
       </li>
-    </ul>
+    </ul> -->
   
+    <div class="body-inner">
+      <!-- Section -->
+      <section class="fullscreen" data-bg-parallax="assets/images/students_bg.jpg">
+          <div class="container">
+              <div>
+                  <div class="text-center m-b-30">
+                      <a href="index.html" class="logo">
+                          <!-- <img src="#" alt="Logo"> -->
+                      </a>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-5 center p-50  b-r-6" style="background-color: rgba(255,255,255, 0.6);">
+                          <h3>Login to your Account</h3>
+                          <form>
+                              <div class="form-group">
+                                  <label class="sr-only">Username</label>
+                                  <input type="text" class="form-control" placeholder="Username" id="username" type="text" [(ngModel)]="username">
+                              </div>
+                              <div class="form-group m-b-5">
+                                  <label class="sr-only">Password</label>
+                                  <input type="password" class="form-control" placeholder="Password" id="password" type="password" [(ngModel)]="password" (keydown.enter)="login()">
+                              </div>
+                              <div class="form-group form-inline text-left">
+                              </div>
+                              <div class="text-left form-group">
+                                  <button type="button" class="btn" (click)="login()">Login</button>
+                              </div>
+                          </form>
+                          <p class="small">Don't have an account yet? <br /><a href="#" data-toggle="modal" data-target="#modalRegisterForm" (click)="form0()">Register New Account</a>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      <!-- end: Section -->
+  </div>
   </ng-container>
 
   <ng-template #logged>
@@ -48,81 +86,388 @@
       <!-- modal -->
       <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="#myModalLabel"
       aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
+            <div class="modal-header">
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            </div>
             <div class="modal-header text-center">
               <h4 class="modal-title w-100 font-weight-bold">Join Today</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body mx-3">
-              <div class="md-form mb-5" *ngIf="formview0">
-                <i class="fas fa-user prefix grey-text"></i>
-                <input type="firstname" id="orangeForm-name" class="form-control validate" [(ngModel)]="user.firstname" placeholder="First Name">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-name">Firstname</label> -->
-      
-                <i class="fas fa-enveslope prefix grey-text"></i>
-                <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="user.lastname" placeholder="Last Name">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
-     
-                <i class="fas fa-lock prefix grey-text"></i>
-                <input type="email" id="orangeForm-pass" class="form-control validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="user.email" placeholder="Email">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-pass">Email</label> -->
+            <div class="modal-body ">
+             <!--Wizard 7-->
+             <form id="wizard7" class="wizard needs-validation" data-style="1" novalidate>
+              <!--Step 1-->
+              <h3>Account Information</h3>
+              <div class="wizard-content">
+                  <div class="h5 mb-4">Please fill with your account details</div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="email">Email address</label>
+                          <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="password">Password</label>
+                          <div class="input-group show-hide-password">
+                              <input class="form-control" name="password" placeholder="Enter password" type="password">
+                              <div class="input-group-append">
+                                  <span class="input-group-text"><i class="icon-eye-off" aria-hidden="true" style="cursor: pointer;"></i></span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="password2">Confirm Password</label>
+                          <div class="input-group show-hide-password">
+                              <input class="form-control" name="password2" placeholder="Enter password" type="password">
+                              <div class="input-group-append">
+                                  <span class="input-group-text"><i class="icon-eye-off" aria-hidden="true" style="cursor: pointer;"></i></span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-
-              <div class="md-form mb-5" *ngIf="formview1">
-                <i class="fas fa-user prefix grey-text"></i>
-                <input type="firstname" id="orangeForm-name" class="form-control validate" [(ngModel)]="user.school" placeholder="School">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-name">Firstname</label> -->
-      
-                <i class="fas fa-enveslope prefix grey-text"></i>
-                <input type="lastname" id="orangeForm-email" class="form-control validate dropdown" id="dropdownMenuButton" data-toggle="dropdown" [(ngModel)]="user.level" placeholder="Education level">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Graduate</a>
-                  <a class="dropdown-item" href="#">Undergraduate</a>
-                  <a class="dropdown-item" href="#">High School</a>
-                </div>
-           
+              <!--end: Step 1-->
+              <!--Step 2-->
+              <h3>Personal Information</h3>
+              <div class="wizard-content">
+                  <div class="h5 mb-4">Please fill with your personal info</div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="name">Name</label>
+                          <input type="text" class="form-control" name="name" placeholder="Enter your Name">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="surname">Surname</label>
+                          <input type="text" class="form-control" name="surname" placeholder="Enter your Surname">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="gender">Gender</label>
+                          <select class="form-control" name="gender">
+                              <option>Select your gender</option>
+                              <option>Female</option>
+                              <option>Male</option>
+                              <option>Rather not say</option>
+                          </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="gender">Date of Birth</label>
+                          <input class="form-control" type="date" name="dateofbirth">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="telephone">Telephone</label>
+                          <input class="form-control" type="tel" name="telephone" placeholder="Enter your Telephone number">
+                      </div>
+                  </div>
               </div>
-              <div class="md-form mb-5" *ngIf="formview2">
-                <i class="fas fa-user prefix grey-text"></i>
-                <input type="firstname" id="orangeForm-name" class="form-control validate" [(ngModel)]="class.teacher" placeholder="Teacher">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-name">Firstname</label> -->
-      
-                <i class="fas fa-enveslope prefix grey-text"></i>
-                <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.start" placeholder="Start Time">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
-     
-                <i class="fas fa-enveslope prefix grey-text"></i>
-                <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.id" placeholder="Course ID">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
-
-                <i class="fas fa-enveslope prefix grey-text"></i>
-                <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.title" placeholder="Course Name">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
-
-                
-                <i class="fas fa-enveslope prefix grey-text"></i>
-                <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.days" placeholder="Days">
-                <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+              <!--end: Step 2-->
+              <!--Step 3-->
+              <h3>Mailing Address</h3>
+              <div class="wizard-content">
+                  <div class="h5 mb-4">Mailing Address</div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="address">Address</label>
+                          <input type="text" class="form-control" name="address" placeholder="Enter your Street Address">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="address2">Address 2</label>
+                          <input type="text" class="form-control" name="address2" placeholder="Enter your Apartment, studio, or floor">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="city">City</label>
+                          <input type="text" class="form-control" name="city" placeholder="Enter your City">
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label>Zip Code:</label>
+                          <input type="number" class="form-control" name="zip" placeholder="Enter Zip Code">
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                          <label for="state">State</label>
+                          <select name="state" class="form-control">
+                              <option>Australia</option>
+                              <option>Option 1</option>
+                              <option>Option 2</option>
+                              <option>Option 3</option>
+                          </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="country">Country</label>
+                          <select name="country" class="form-control">
+                              <option>United States</option>
+                              <option>Option 1</option>
+                              <option>Option 2</option>
+                              <option>Option 3</option>
+                          </select>
+                      </div>
+                  </div>
               </div>
+              <!--end: Step 3-->
+              <!--Step 4-->
+              <h3>Confirmation</h3>
+              <div class="wizard-content">
+                  <div class="h5 mb-4">Confimration</div>
+                  <p>Customize your experience by confirming your personalization settings and the
+                      data
+                      stored with your account. You can always learn more about these options,
+                      adjust
+                      them, and review your activity in your Account</p>
+                  <p>These settings apply wherever you are signed in to your new Account.</p>
+                  <div class="form-group mb-1 mt-5">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" name="reminders" id="reminders" class="custom-control-input">
+                          <label class="custom-control-label" for="reminders">Send me occasional
+                              reminders
+                              about these settings</label>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" name="terms_conditions" id="terms_conditions" class="custom-control-input">
+                          <label class="custom-control-label" for="terms_conditions">By checking
+                              this
+                              option, you agree to acceot with the <a href="#">Terms and
+                                  Conditions</a>.</label>
+                      </div>
+                  </div>
+              </div>
+              <!--end: Step 4-->
+          </form>
+          <!--end: Wizard 7-->
+
       
             </div>
-            <div class="modal-footer d-flex justify-content-center" *ngIf="formview0">
-              <button class="btn btn-deep-orange" (click)="form1()">Next</button>
-            </div>
-            <div class="modal-footer d-flex justify-content-center" *ngIf="formview1">
-              <button class="btn btn-deep-orange" (click)="form2()">Enter Courses</button>
-            </div>
-            <div class="modal-footer d-flex justify-content-center" *ngIf="formview2">
-              <button class="btn btn-deep-orange" (click)="addCourse()">Add Course</button>
-              <button class="btn btn-deep-orange" (click)="register()">Finish</button>
 
             </div>
 
           </div>
-        </div>
     </div>
     
+
+    <!-- modal (old) -->
+    <div class="modal fade" id="modalRegisterForm(old)" tabindex="-1" role="dialog" aria-labelledby="#myModalLabel"
+    aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Join Today</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="md-form mb-5" *ngIf="formview0">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="firstname" id="orangeForm-name" class="form-control validate" [(ngModel)]="user.firstname" placeholder="First Name">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-name">Firstname</label> -->
+    
+              <i class="fas fa-enveslope prefix grey-text"></i>
+              <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="user.lastname" placeholder="Last Name">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+   
+              <i class="fas fa-lock prefix grey-text"></i>
+              <input type="email" id="orangeForm-pass" class="form-control validate" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="user.email" placeholder="Email">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-pass">Email</label> -->
+            </div>
+
+            <div class="md-form mb-5" *ngIf="formview1">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="firstname" id="orangeForm-name" class="form-control validate" [(ngModel)]="user.school" placeholder="School">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-name">Firstname</label> -->
+    
+              <i class="fas fa-enveslope prefix grey-text"></i>
+              <input type="lastname" id="orangeForm-email" class="form-control validate dropdown" id="dropdownMenuButton" data-toggle="dropdown" [(ngModel)]="user.level" placeholder="Education level">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Graduate</a>
+                <a class="dropdown-item" href="#">Undergraduate</a>
+                <a class="dropdown-item" href="#">High School</a>
+              </div>
+         
+            </div>
+            <div class="md-form mb-5" *ngIf="formview2">
+              <i class="fas fa-user prefix grey-text"></i>
+              <input type="firstname" id="orangeForm-name" class="form-control validate" [(ngModel)]="class.teacher" placeholder="Teacher">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-name">Firstname</label> -->
+    
+              <i class="fas fa-enveslope prefix grey-text"></i>
+              <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.start" placeholder="Start Time">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+   
+              <i class="fas fa-enveslope prefix grey-text"></i>
+              <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.id" placeholder="Course ID">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+
+              <i class="fas fa-enveslope prefix grey-text"></i>
+              <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.title" placeholder="Course Name">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+
+              
+              <i class="fas fa-enveslope prefix grey-text"></i>
+              <input type="lastname" id="orangeForm-email" class="form-control validate" [(ngModel)]="class.days" placeholder="Days">
+              <!-- <label data-error="wrong" data-success="right" for="orangeForm-email">Lastname</label> -->
+            </div>
+    
+          </div>
+          <div class="modal-footer d-flex justify-content-center" *ngIf="formview0">
+            <button class="btn btn-deep-orange" (click)="form1()">Next</button>
+          </div>
+          <div class="modal-footer d-flex justify-content-center" *ngIf="formview1">
+            <button class="btn btn-deep-orange" (click)="form2()">Enter Courses</button>
+          </div>
+          <div class="modal-footer d-flex justify-content-center" *ngIf="formview2">
+            <button class="btn btn-deep-orange" (click)="addCourse()">Add Course</button>
+            <button class="btn btn-deep-orange" (click)="register()">Finish</button>
+
+          </div>
+
+        </div>
+      </div>
+  </div>
+
+  <script>
+    $('#wizard1').steps({
+        headerTag: 'h3',
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    $('#wizard2').steps({
+        headerTag: 'h3',
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    $('#wizard3').steps({
+        headerTag: 'h3',
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    $('#wizard4').steps({
+        headerTag: 'h3',
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    $('#wizard5').steps({
+        headerTag: 'h3',
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    $('#wizard6').steps({
+        headerTag: 'h3',
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    //Advanced - with validation
+    var wizard7 = $('#wizard7');
+    wizard7.steps({
+        headerTag: "h3",
+        bodyTag: '.wizard-content',
+        autoFocus: true,
+        enableAllSteps: true,
+        titleTemplate: '<span class="number">#index#</span><span class="title">#title#</span>',
+        onStepChanging: function (event, currentIndex, newIndex) {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex) {
+                return true;
+            }
+            return wizard7.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {},
+        onFinishing: function (event, currentIndex) {
+            return wizard7.valid();
+        },
+        onFinished: function (event, currentIndex) {
+            INSPIRO.elements.notification("Submited",
+                "Thank you, your account has been registed successfully", "success");
+        }
+    });
+    //Validation
+    wizard7.validate({
+        errorClass: 'is-invalid',
+        validClass: 'is-valid',
+        errorElement: "div",
+        rules: {
+            // Step 1 - Account information
+            username: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true,
+                minlength: 8
+            },
+            password: {
+                required: true,
+                minlength: 5,
+                maxlength: 12
+            },
+            password2: {
+                required: true,
+                minlength: 5,
+                maxlength: 12
+            },
+            // Step 4 - Confirmation
+            reminders: {
+                required: true
+            },
+            terms_conditions: {
+                required: true
+            },
+        },
+        errorPlacement: function (error, element) {
+            $(element).parents(".form-group").append(error);
+        }
+    });
+    $('.wizard').find(".actions ul > li > a").addClass("btn");
+</script>   
