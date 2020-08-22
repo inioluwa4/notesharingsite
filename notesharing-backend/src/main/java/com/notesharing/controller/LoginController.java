@@ -59,20 +59,20 @@ public class LoginController {
 		}
 
 	}
-	@PostMapping(value = "/register")
-	public ResponseEntity<Login> register(Login user) {
-		int i = logServ.addUser(user);
-
-		if (i > 0){
-			log.trace("User Saved to db " + user.getFirstname());
-			return ResponseEntity.ok(user);
-		}
-		else {
-			log.trace("User not saved to db " + user.getFirstname());
-			return ResponseEntity.notFound().build();
-		}
-
-	}
+//	@PostMapping(value = "/register")
+//	public ResponseEntity<Login> register(Login user) {
+//		int i = logServ.addUser(user);
+//
+//		if (i > 0){
+//			log.trace("User Saved to db " + user.getFirstname());
+//			return ResponseEntity.ok(user);
+//		}
+//		else {
+//			log.trace("User not saved to db " + user.getFirstname());
+//			return ResponseEntity.notFound().build();
+//		}
+//
+//	}
 
 	@DeleteMapping(value = "/login")
 	public ResponseEntity<Void> logout(HttpSession session) {
