@@ -4,8 +4,12 @@ export class Login {
     password: string;
     firstname: string;
     lastname: string;
+    dob: string;
+    gender: string;
     email: string;
-    school: string;
+    school_name: string;
+    school_state: string;
+    school_city: string;
     level: string;
     course: Array<Object>;
 

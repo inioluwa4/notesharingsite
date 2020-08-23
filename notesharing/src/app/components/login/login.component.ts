@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   public loggedUser: Login;
   public class: Course;
+  private classes: Array<Course>
 
   public username: string;
   public password: string;
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.classes = []
     
     this.formview0 = false;
     this.formview1 = false;
@@ -95,7 +97,15 @@ export class LoginComponent implements OnInit {
     );
 
   }
-  addCourse() {
+  addClass() {
+    console.log(this.class)
+    this.classes.push(this.class)
+    console.log(this.classes)
+    this.class = new Course()
+
+
+
+
 
   }
 

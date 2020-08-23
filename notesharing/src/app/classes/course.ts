@@ -4,7 +4,7 @@ export class Course {
     
     id: string;
     title: string;
-    teacher: string;
+    instructor: string;
     days: string;
     start: Time;
 
