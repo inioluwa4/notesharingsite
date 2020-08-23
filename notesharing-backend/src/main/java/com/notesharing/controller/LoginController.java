@@ -39,11 +39,11 @@ public class LoginController {
 	}
 //
 	@PostMapping(value = "/login")
-	public ResponseEntity<Login> postLogin(String user, String pass, HttpSession session) {
-		Login loggedIn = logServ.getUser(user, pass);
+	public ResponseEntity<Login> postLogin(String username, String password, HttpSession session) {
+		Login loggedIn = logServ.getUser(username, password);
 
 
-		log.trace("Attempting to log in as User " + user + ", " + pass);
+		log.trace("Attempting to log in as User " + username + ", " + password);
 
 		if (loggedIn == null) {
 			log.trace("Cannot login null user");
@@ -51,7 +51,7 @@ public class LoginController {
 		} else {
 			// Check if Person is a user
 			log.trace("Logging in");
-			Login loggedUser = new Login(loggedIn.getUsername(), loggedIn.getPassword());
+			Login loggedUser = new Login(username,password);
 
 			session.setAttribute("loggedUser", loggedUser);
 			return ResponseEntity.ok(loggedUser);
@@ -60,18 +60,21 @@ public class LoginController {
 
 	}
 	@PostMapping(value = "/register")
-	public ResponseEntity<Login> register(Login user) {
+	public ResponseEntity<Login> register(@RequestBody Login user, HttpSession session) {
 		int i = logServ.addUser(user);
+		session.setAttribute("loggedUser", user);
 		log.trace(user);
 
 		if (i > 0){
-			log.trace("User Saved to db " + user.getFirstname());
+			log.trace("User Saved to db " + user);
 			return ResponseEntity.ok(user);
 		}
 		else {
-			log.trace("User not saved to db " + user.getFirstname());
+			log.trace("User not saved to db " + user);
 			return ResponseEntity.notFound().build();
 		}
+		
+		
 
 	}
 

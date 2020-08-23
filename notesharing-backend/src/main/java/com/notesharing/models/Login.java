@@ -64,9 +64,6 @@ public class Login {
 	}
 
 
-	public String getPassword() {
-		return password;
-	}
 
 
 	public void setPassword(String password) {
@@ -199,8 +196,11 @@ public class Login {
 
 	@Override
 	public String toString() {
-		return "Login [username=" + username + "]";
+		return "Login [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", gender=" + gender + ", email=" + email + ", level=" + level + ", dob=" + dob + ", school_name="
+				+ school_name + ", school_state=" + school_state + ", school_city=" + school_city + "]";
 	}
+
 
 
 

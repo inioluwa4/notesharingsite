@@ -29,10 +29,9 @@ public class Course {
 	@Column(name = "course_id")
 	private int id;
 	private String title;
-	@Column(name = "user_password")
-	private String password;
 	private String Instructor;
-	private String course_days;
+	@Column(name = "course_days")
+	private String days;
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="course_user_id")
@@ -71,17 +70,6 @@ public class Course {
 
 
 
-	public String getPassword() {
-		return password;
-	}
-
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
 
 	public String getInstructor() {
 		return Instructor;
@@ -96,13 +84,13 @@ public class Course {
 
 
 	public String getCourse_days() {
-		return course_days;
+		return days;
 	}
 
 
 
 	public void setCourse_days(String course_days) {
-		this.course_days = course_days;
+		this.days = course_days;
 	}
 
 
@@ -124,10 +112,9 @@ public class Course {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Instructor == null) ? 0 : Instructor.hashCode());
-		result = prime * result + ((course_days == null) ? 0 : course_days.hashCode());
+		result = prime * result + ((days == null) ? 0 : days.hashCode());
 		result = prime * result + ((course_user == null) ? 0 : course_user.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -148,10 +135,10 @@ public class Course {
 				return false;
 		} else if (!Instructor.equals(other.Instructor))
 			return false;
-		if (course_days == null) {
-			if (other.course_days != null)
+		if (days == null) {
+			if (other.days != null)
 				return false;
-		} else if (!course_days.equals(other.course_days))
+		} else if (!days.equals(other.days))
 			return false;
 		if (course_user == null) {
 			if (other.course_user != null)
@@ -159,11 +146,6 @@ public class Course {
 		} else if (!course_user.equals(other.course_user))
 			return false;
 		if (id != other.id)
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -177,11 +159,12 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", title=" + title + ", password=" + password + ", Instructor=" + Instructor
-				+ ", course_days=" + course_days + ", course_user=" + course_user + "]";
+		return "Course [id=" + id + ", title=" + title + ", Instructor=" + Instructor + ", course_days=" + days
+				+ ", course_user=" + course_user + "]";
 	}
 
-	
+
+
 
 }
 

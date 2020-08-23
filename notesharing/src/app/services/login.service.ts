@@ -15,8 +15,9 @@ export class LoginService {
   private appUrl = this.urlService.getUrl();
   //private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private headers = new HttpHeaders({
-    'Content-Type': 'application/x-www-form-urlencoded'
+    'Content-Type': 'application/json' 
   });
+
 
 
   constructor(

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { Login } from 'src/app/classes/login';
 import { Course } from 'src/app/classes/course';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   public loggedUser: Login;
   public class: Course;
-  private classes: Array<Course>
+  private courses: Array<Course>
 
   public username: string;
   public password: string;
@@ -26,11 +27,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public route: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private courseService: CourseService
     ) { }
 
   ngOnInit() {
-    this.classes = []
+    this.courses = []
     
     this.formview0 = false;
     this.formview1 = false;
@@ -86,6 +88,7 @@ export class LoginComponent implements OnInit {
   register() {
   
     console.log(this.user)
+    console.log(this.courses)
 
     this.loginService.register(this.user).subscribe(
       resp => {
@@ -93,15 +96,31 @@ export class LoginComponent implements OnInit {
         console.log('logged user ' + this.loggedUser);
         // this.route.navigate(['/login']);
 
+        this.courseService.addCourses(this.courses).subscribe(
+          resp => {
+            console.log('Courses - ' + resp);
+            // this.route.navigate(['/login']);
+    
+          }
+        );
+    
+
       }
+      
     );
 
+
+
+
   }
+
+
+
   addClass() {
     console.log(this.class)
-    this.classes.push(this.class)
+    this.courses.push(this.class)
     // this.user.courses = this.classes
-    console.log(this.classes)
+    console.log(this.courses)
     this.class = new Course()
 
 
