@@ -1,5 +1,6 @@
 export class Login {
 
+    id: number;
     username: string;
     password: string;
     firstname: string;
@@ -11,7 +12,7 @@ export class Login {
     school_state: string;
     school_city: string;
     level: string;
-    courses: Array<Object>;
+    // courses: Array<Object>;
 
 
 }

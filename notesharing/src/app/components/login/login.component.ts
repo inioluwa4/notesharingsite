@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
       resp => {
         this.loggedUser = resp;
         console.log('logged user ' + this.loggedUser);
-        this.route.navigate(['/home']);
+        // this.route.navigate(['/login']);
 
       }
     );
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
   addClass() {
     console.log(this.class)
     this.classes.push(this.class)
-    this.user.courses = this.classes
+    // this.user.courses = this.classes
     console.log(this.classes)
     this.class = new Course()
 

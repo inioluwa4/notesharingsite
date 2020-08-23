@@ -20,7 +20,9 @@
 		
 		<!-- Annotation Mappings -->
 
-		<mapping class="com.notesharing.models.Login"/>		
+		<mapping class="com.notesharing.models.Login"/>
+		<mapping class="com.notesharing.models.Course"/>	
+		<mapping class="com.notesharing.models.School"/>			
 		
 		
 

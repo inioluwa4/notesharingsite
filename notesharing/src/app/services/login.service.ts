@@ -12,7 +12,7 @@ import { Login } from '../classes/login';
   providedIn: 'root'
 })
 export class LoginService {
-  private appUrl = this.urlService.getUrl() + 'login';
+  private appUrl = this.urlService.getUrl();
   //private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private headers = new HttpHeaders({
     'Content-Type': 'application/x-www-form-urlencoded'
@@ -28,7 +28,7 @@ export class LoginService {
     if (username && password) {
       // we are attempting to log in
       const body = `user=${username}&pass=${password}`;
-      return this.http.post(this.appUrl, body, {
+      return this.http.post(this.appUrl+'login', body, {
         headers: this.headers,
         withCredentials: true
       }).pipe(
@@ -42,7 +42,7 @@ export class LoginService {
       );
     } else {
       // checking to see if we're logged in
-      return this.http.get(this.appUrl, {withCredentials: true}).pipe(
+      return this.http.get(this.appUrl+'login', {withCredentials: true}).pipe(
         map( resp => {
           const user: Login = resp as Login;
           if (user) {
@@ -57,24 +57,25 @@ export class LoginService {
   
   register(user:Login): Observable<Login> {
     if (user) {
-      // we are attempting to log in
+      // sending post
+
       const body = user;
-      return this.http.post(this.appUrl, body, {
+      return this.http.post(this.appUrl+'register', body, {
         headers: this.headers,
         withCredentials: true
       }).pipe(
         map(resp => {
-          const user: Login = resp as Login;
-          if (user) {
-            console.log(user);
+          const new_user: Login = resp as Login;
+          if (new_user) {
+            console.log(new_user);
           }
-          return user;
+          return new_user;
         })
       );
     } 
   }
   logout(): Observable<object> {
-    return this.http.delete(this.appUrl, {withCredentials: true}).pipe(
+    return this.http.delete(this.appUrl+'login', {withCredentials: true}).pipe(
       map(success => {
         return success;
       })
