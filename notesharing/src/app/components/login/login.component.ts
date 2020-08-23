@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit {
         this.courseService.addCourses(this.courses).subscribe(
           resp => {
             console.log('Courses - ' + resp);
-            // this.route.navigate(['/login']);
+            this.route.navigate(['/home']);
     
           }
         );

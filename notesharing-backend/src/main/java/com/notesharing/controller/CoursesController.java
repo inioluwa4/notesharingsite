@@ -37,10 +37,11 @@ public class CoursesController {
 	@GetMapping(value = "/courses/all")
 	public ResponseEntity<List<Course>> login(HttpSession session) {
 		Login loggedUser = (Login) session.getAttribute("loggedUser");
-		log.trace("Logged User"+loggedUser);
+		log.trace("Logged - "+loggedUser);
 		if (loggedUser != null) {
-		courseServ.getCoursesByUser(loggedUser);
-		return ResponseEntity.ok(courseServ.getCoursesByUser(loggedUser));
+		List<Course> c = courseServ.getCoursesByUser(loggedUser);
+		log.trace(c);
+		return ResponseEntity.ok(c);
 		}
 		else {
 			return ResponseEntity.status(401).build();

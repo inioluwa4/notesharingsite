@@ -1,1 +1,17 @@
 <app-login></app-login>
+
+
+<div *ngFor="let c of courseList" id="courseList">
+
+    <!-- Card Dark -->
+    <div class="card">
+        <!--Body-->
+        <p>ID: {{ c.id }}</p>
+        <p>Title: {{ c.title }}</p>
+        <p>Instructor: {{ c.instructor }}</p>
+        <p>Start: {{ c.start}}</p>
+        <p>Days: {{ c.days}}</p> 
+    </div>
+
+
+</div>

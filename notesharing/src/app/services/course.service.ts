@@ -4,6 +4,7 @@ import { UrlService } from './url.service';
 import { Course } from '../classes/course';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Login } from '../classes/login';
 
 
 @Injectable({
@@ -22,6 +23,20 @@ export class CourseService {
     private urlService: UrlService
   ) { }
 
+  getCourses(): Observable<Array<Course>>{
+
+      const url = this.appUrl+'courses/all';
+    
+    return this.http.get(url, {withCredentials: true}).pipe(
+      map( resp => {
+        const courses: Array<Course> = resp as Array<Course>;
+        if (courses) {
+        }
+        console.log("Got Courses "+courses)
+        return courses;
+      })
+    );
+  }
 
   addCourses(payload: Array<Course>): Observable<Boolean> {
     if (payload) {
@@ -42,12 +57,14 @@ export class CourseService {
       );
     } 
   }
-  // logout(): Observable<object> {
-  //   return this.http.delete(this.appUrl+'login', {withCredentials: true}).pipe(
-  //     map(success => {
-  //       return success;
-  //     })
-  //   );
-  // }
+
+  deleteCourse(): Observable<object> {
+    const url = this.appUrl+'courses/remove';
+    return this.http.delete(url, {withCredentials: true}).pipe(
+      map(success => {
+        return success;
+      })
+    );
+  }
 
 }

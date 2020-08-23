@@ -39,11 +39,11 @@ public class LoginController {
 	}
 //
 	@PostMapping(value = "/login")
-	public ResponseEntity<Login> postLogin(String username, String password, HttpSession session) {
-		Login loggedIn = logServ.getUser(username, password);
+	public ResponseEntity<Login> postLogin(String user, String pass, HttpSession session) {
+		Login loggedIn = logServ.getUser(user, pass);
 
 
-		log.trace("Attempting to log in as User " + username + ", " + password);
+		log.trace("Attempting to log in as User " + user + ", " + pass);
 
 		if (loggedIn == null) {
 			log.trace("Cannot login null user");
@@ -51,10 +51,10 @@ public class LoginController {
 		} else {
 			// Check if Person is a user
 			log.trace("Logging in");
-			Login loggedUser = new Login(username,password);
+			
 
-			session.setAttribute("loggedUser", loggedUser);
-			return ResponseEntity.ok(loggedUser);
+			session.setAttribute("loggedUser", loggedIn);
+			return ResponseEntity.ok(loggedIn);
 
 		}
 

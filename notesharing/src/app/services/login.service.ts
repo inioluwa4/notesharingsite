@@ -13,9 +13,9 @@ import { Login } from '../classes/login';
 })
 export class LoginService {
   private appUrl = this.urlService.getUrl();
-  //private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private headers2 = new HttpHeaders({ 'Content-Type': 'application/json' });
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json' 
+    'Content-Type': 'application/x-www-form-urlencoded'
   });
 
 
@@ -27,6 +27,7 @@ export class LoginService {
 
   login(username: string, password: string): Observable<Login> {
     if (username && password) {
+      console.log(username)
       // we are attempting to log in
       const body = `user=${username}&pass=${password}`;
       return this.http.post(this.appUrl+'login', body, {
@@ -62,7 +63,7 @@ export class LoginService {
 
       const body = user;
       return this.http.post(this.appUrl+'register', body, {
-        headers: this.headers,
+        headers: this.headers2,
         withCredentials: true
       }).pipe(
         map(resp => {

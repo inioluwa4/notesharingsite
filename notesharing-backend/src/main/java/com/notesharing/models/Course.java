@@ -1,5 +1,7 @@
 package com.notesharing.models;
 
+import java.sql.Timestamp;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,6 +38,8 @@ public class Course {
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="course_user_id")
 	private Login course_user;
+	@Column(name="course_start")
+	private Timestamp start;
 
 	
 	
@@ -79,6 +83,30 @@ public class Course {
 
 	public void setInstructor(String instructor) {
 		Instructor = instructor;
+	}
+
+
+
+	public String getDays() {
+		return days;
+	}
+
+
+
+	public void setDays(String days) {
+		this.days = days;
+	}
+
+
+
+	public Timestamp getStart() {
+		return start;
+	}
+
+
+
+	public void setStart(Timestamp start) {
+		this.start = start;
 	}
 
 
