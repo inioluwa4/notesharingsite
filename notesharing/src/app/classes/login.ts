@@ -11,7 +11,7 @@ export class Login {
     school_state: string;
     school_city: string;
     level: string;
-    course: Array<Object>;
+    courses: Array<Object>;
 
 
 }

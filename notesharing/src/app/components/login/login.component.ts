@@ -100,6 +100,7 @@ export class LoginComponent implements OnInit {
   addClass() {
     console.log(this.class)
     this.classes.push(this.class)
+    this.user.courses = this.classes
     console.log(this.classes)
     this.class = new Course()
 
