@@ -1,8 +1,10 @@
 <app-login></app-login>
-
-
-<div *ngFor="let c of courseList" id="courseList">
-
+<div class="dropdown text-center">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu6" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">
+  MyCourses
+</button>
+  <div  class="dropdown-menu" *ngFor="let c of courseList" id="courseList">
     <!-- Card Dark -->
     <div class="card">
         <!--Body-->
@@ -12,6 +14,44 @@
         <p>Start: {{ c.start}}</p>
         <p>Days: {{ c.days}}</p> 
     </div>
-
+  </div>
+  
 
 </div>
+
+
+
+<!-- Card Wider -->
+<div class="card card-cascade wider">
+
+    <!-- Card image -->
+    <div class="view view-cascade overlay">
+      <img class="card-img-top" src="assets/images/find_notes.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+  
+    <!-- Card content -->
+    <div class="card-body card-body-cascade text-center">
+  
+      <!-- Title -->
+      <h4 class="card-title"><strong>Find Notes</strong></h4>
+      <div class="input-group md-form form-sm form-2 pl-0">
+        <input class="form-control my-0 py-1 lime-border" type="text" placeholder="PHYS 209" aria-label="Notes" (keydown.enter) = "search()" [(ngModel)]="notes_query" name="notes_query">
+        <button class="btn aqua-gradient btn-rounded btn-sm my-0" (click)="search()">Search</button>
+
+      </div>
+      <!-- Subtitle -->
+      <h5 class="blue-text pb-2"><strong>Click to search for notes</strong></h5>
+      <!-- Text -->
+      <p class="card-text">Did you know you can earn new friends and a few extra bucks by sharing your notes with your classmates?</p>
+  
+      <button *ngIf="route.url!=='/notesharing/share'" routerLink="/notesharing/share" class="btn btn-deep-orange">
+        Share Notes
+    </button>
+
+  
+    </div>
+  
+  </div>

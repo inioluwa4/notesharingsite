@@ -9,13 +9,18 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UrlService } from './services/url.service';
+import { FindNotesLobbyComponent } from './components/find-notes-lobby/find-notes-lobby.component';
+import { ShareNotesComponent } from './components/share-notes/share-notes.component';
+// import { UploadService } from './services/upload.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    FindNotesLobbyComponent,
+    ShareNotesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,7 @@ import { UrlService } from './services/url.service';
   ],
   providers: [
     UrlService
+    // UploadService
   ],
   bootstrap: [AppComponent]
 })

@@ -18,10 +18,12 @@ export class LoginComponent implements OnInit {
 
   public username: string;
   public password: string;
+  public message: string = "";
   public user: Login;
   public formview0 : Boolean
   public formview1 : Boolean 
   public formview2 : Boolean 
+  public username_verify : Boolean
 
  
 
@@ -55,7 +57,7 @@ export class LoginComponent implements OnInit {
       resp => {
         this.loggedUser = resp;
         console.log('logged user ' + this.loggedUser);
-        this.route.navigate(['/home']);
+        this.route.navigate(['/notesharing']);
 
       }
     );
@@ -66,6 +68,7 @@ export class LoginComponent implements OnInit {
 
   
   form0() {
+    this.message = ""
     this.formview0 = true
     this.formview1 = false
     this.formview2 = false
@@ -73,12 +76,18 @@ export class LoginComponent implements OnInit {
 
   }
   form1(){
-    this.formview0 = false
-    this.formview1 = true
-    this.formview2 = false
+    if (this.validate(this.user.password, "password")){
+      this.message = ""
+      this.formview0 = false
+      this.formview1 = true
+      this.formview2 = false
+
+    }
+
 
   }
   form2(){
+    this.message = ""
     this.formview0 = false
     this.formview1 = false
     this.formview2 = true
@@ -108,6 +117,31 @@ export class LoginComponent implements OnInit {
       }
       
     );
+
+  }
+
+  validate(data:string, data_type:string){
+
+    if (data_type == "username"){
+      if (data.length < 6){
+        this.message = `Username must be at least 6 characters             
+        `
+        return false
+      }
+
+      return true
+    }
+    
+    if (data_type == "password"){
+      if (data.length < 8 || !this.hasUpperCase || !this.hasNumber){
+        this.message = `Password must be at least 8 characters.
+                        Password must contain at least one upper case.
+                        Passwword must contain at least one number.`
+        return false
+      }
+      return true
+    }
+
 
 
 
@@ -139,4 +173,13 @@ export class LoginComponent implements OnInit {
     );
   }
 
+
+
+  hasUpperCase(str: string) {
+    return (/[A-Z]/.test(str));
+  }
+  hasNumber(str: string) {
+    return (/[0-9]/.test(str));
+
+  }
 }

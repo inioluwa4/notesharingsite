@@ -12,6 +12,7 @@ import { Course } from 'src/app/classes/course';
 })
 export class HomeComponent implements OnInit {
   public courseList: Array<Course>;
+  public notes_query: string;
 
 
   constructor(
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseList = []
+    this.notes_query = ""
 
     console.log()
 
@@ -35,6 +37,9 @@ export class HomeComponent implements OnInit {
     );
   }
     
+  search(){
+    console.log("Searching Notes - "+this.notes_query)
+  }
 
 
 }
