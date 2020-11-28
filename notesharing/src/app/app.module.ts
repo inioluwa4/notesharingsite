@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { UrlService } from './services/url.service';
 import { FindNotesLobbyComponent } from './components/find-notes-lobby/find-notes-lobby.component';
 import { ShareNotesComponent } from './components/share-notes/share-notes.component';
-// import { UploadService } from './services/upload.service';
+import { UploadService } from './services/upload.service';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { ShareNotesComponent } from './components/share-notes/share-notes.compon
 
   ],
   providers: [
-    UrlService
-    // UploadService
+    UrlService,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

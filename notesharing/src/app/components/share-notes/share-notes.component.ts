@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { UploadService } from 'src/app/services/upload.service';
+import { UploadService } from 'src/app/services/upload.service';
 
 
 @Component({
@@ -10,14 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class ShareNotesComponent implements OnInit {
   toFile;
 
-  // constructor(private uploadService: UploadService) { }
+  constructor(private uploadService: UploadService) { }
 
   ngOnInit() {
   }
 
   submit() {
     const file = this.toFile.item(0);
-    // this.uploadService.fileUpload(file);
+    this.uploadService.fileUpload(file);
   }
 
   onChange(event) {
